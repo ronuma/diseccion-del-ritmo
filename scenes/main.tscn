@@ -1,0 +1,254 @@
+[gd_scene load_steps=22 format=3 uid="uid://c8kn7lcdsspc3"]
+
+[ext_resource type="AudioStream" uid="uid://fyvqvml0ngk4" path="res://assets/Shaker.mp3" id="1_57j8k"]
+[ext_resource type="AudioStream" uid="uid://duosg5jri6v7u" path="res://assets/BasePerc.mp3" id="1_cuvtl"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_eu5xa"]
+[ext_resource type="Texture2D" uid="uid://dbtas714c60hx" path="res://assets/FirstBG.png" id="1_hyt8s"]
+[ext_resource type="AudioStream" uid="uid://bbn8su5gq7vxr" path="res://assets/Bass.mp3" id="2_q8xu5"]
+[ext_resource type="Script" path="res://scripts/drums.gd" id="3_bnett"]
+[ext_resource type="AudioStream" uid="uid://cbrbjiqdjd25y" path="res://assets/Drums.mp3" id="3_mdx17"]
+[ext_resource type="AudioStream" uid="uid://dvcq2ycikjk6x" path="res://assets/GuitarHarm.mp3" id="4_7ytwl"]
+[ext_resource type="Script" path="res://scripts/base_perc.gd" id="5_caw1v"]
+[ext_resource type="AudioStream" uid="uid://co45b1dvn1td8" path="res://assets/GuitarIntro.mp3" id="5_xg6je"]
+[ext_resource type="Script" path="res://scripts/bass.gd" id="7_ox3y4"]
+[ext_resource type="AudioStream" uid="uid://b1mccluix2aql" path="res://assets/GuitarMain.mp3" id="8_4tm2i"]
+[ext_resource type="Script" path="res://scripts/shaker.gd" id="13_qvnx0"]
+[ext_resource type="Texture2D" uid="uid://p2tuldt0ghxr" path="res://sprites/Bass.svg" id="15_vpq52"]
+[ext_resource type="Texture2D" uid="uid://t7s86302p4ux" path="res://sprites/Bongos.svg" id="16_vdcjv"]
+[ext_resource type="Texture2D" uid="uid://ctu6xki2b3vxe" path="res://sprites/Drums.svg" id="17_3f2rf"]
+[ext_resource type="Texture2D" uid="uid://b0opjtn2x0dng" path="res://sprites/Guitar.svg" id="18_cgtmn"]
+[ext_resource type="Script" path="res://scripts/guitar_sprite.gd" id="18_i0emh"]
+[ext_resource type="Texture2D" uid="uid://c4i27ryylb3r0" path="res://sprites/Shaker.svg" id="19_s7e2k"]
+
+[sub_resource type="GDScript" id="GDScript_7arqq"]
+script/source = "extends AudioStreamPlayer
+
+func _on_guitar_slider_value_changed(value: float) -> void:
+	if value == -40.0:
+		volume_db = -INF
+		return
+	volume_db = value
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_6feeu"]
+font_size = 28
+
+[node name="Main" type="Node"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="BG" type="Sprite2D" parent="."]
+position = Vector2(-2.00001, -3)
+scale = Vector2(0.458268, 0.391226)
+texture = ExtResource("1_hyt8s")
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_eu5xa")
+
+[node name="Drums" type="AudioStreamPlayer" parent="GameManager"]
+stream = ExtResource("3_mdx17")
+autoplay = true
+parameters/looping = true
+script = ExtResource("3_bnett")
+
+[node name="BasePerc" type="AudioStreamPlayer" parent="GameManager"]
+stream = ExtResource("1_cuvtl")
+parameters/looping = true
+script = ExtResource("5_caw1v")
+
+[node name="Bass" type="AudioStreamPlayer" parent="GameManager"]
+stream = ExtResource("2_q8xu5")
+parameters/looping = true
+script = ExtResource("7_ox3y4")
+
+[node name="GuitarIntro" type="AudioStreamPlayer" parent="GameManager"]
+stream = ExtResource("5_xg6je")
+parameters/looping = true
+
+[node name="GuitarHarm" type="AudioStreamPlayer" parent="GameManager"]
+stream = ExtResource("4_7ytwl")
+parameters/looping = true
+
+[node name="GuitarMain" type="AudioStreamPlayer" parent="GameManager"]
+stream = ExtResource("8_4tm2i")
+autoplay = true
+parameters/looping = true
+script = SubResource("GDScript_7arqq")
+
+[node name="Shaker" type="AudioStreamPlayer" parent="GameManager"]
+stream = ExtResource("1_57j8k")
+volume_db = -4.0
+parameters/looping = true
+script = ExtResource("13_qvnx0")
+
+[node name="GuitarSlider" type="VSlider" parent="."]
+offset_left = -500.0
+offset_top = 20.0
+offset_right = -480.0
+offset_bottom = 220.0
+min_value = -40.0
+max_value = 20.0
+step = 0.1
+metadata/_edit_use_anchors_ = true
+
+[node name="DrumsSlider" type="VSlider" parent="."]
+offset_left = -410.0
+offset_top = 20.0
+offset_right = -390.0
+offset_bottom = 220.0
+min_value = -40.0
+max_value = 20.0
+step = 0.1
+metadata/_edit_use_anchors_ = true
+
+[node name="BasePercSlider" type="VSlider" parent="."]
+offset_left = -320.0
+offset_top = 20.0
+offset_right = -300.0
+offset_bottom = 220.0
+min_value = -40.0
+max_value = 20.0
+step = 0.1
+metadata/_edit_use_anchors_ = true
+
+[node name="BassSlider" type="VSlider" parent="."]
+offset_left = -230.0
+offset_top = 20.0
+offset_right = -210.0
+offset_bottom = 220.0
+min_value = -40.0
+max_value = 20.0
+step = 0.1
+metadata/_edit_use_anchors_ = true
+
+[node name="ShakerSlider" type="VSlider" parent="."]
+offset_left = -140.0
+offset_top = 20.0
+offset_right = -120.0
+offset_bottom = 220.0
+min_value = -40.0
+max_value = 20.0
+step = 0.1
+metadata/_edit_use_anchors_ = true
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 335.0
+offset_top = 202.0
+offset_right = 506.0
+offset_bottom = 249.0
+text = "Aciertos: 0"
+label_settings = SubResource("LabelSettings_6feeu")
+metadata/_edit_use_anchors_ = true
+
+[node name="InstLabel" type="Label" parent="."]
+offset_left = -24.0
+offset_top = 158.0
+offset_right = 298.0
+offset_bottom = 281.0
+text = "Presiona \"Espacio\" para pausar/reanudar el bajo
+"
+label_settings = SubResource("LabelSettings_6feeu")
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="InstLabel6" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.36646
+anchor_top = -1.28455
+anchor_right = 0.36646
+anchor_bottom = -1.28455
+offset_left = -330.0
+offset_top = 340.0
+offset_right = -8.0
+offset_bottom = 463.0
+text = "\"D\""
+label_settings = SubResource("LabelSettings_6feeu")
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="InstLabel4" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 2.58
+anchor_top = -3.82927
+anchor_right = 4.34
+anchor_bottom = -3.82927
+offset_left = -425.0
+offset_top = 337.0
+offset_right = -103.0
+offset_bottom = 460.0
+text = "\"B\""
+label_settings = SubResource("LabelSettings_6feeu")
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="InstLabel5" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = -2.70497
+anchor_top = 0.756098
+anchor_right = -2.70497
+anchor_bottom = 0.756098
+offset_left = -529.0
+offset_top = 334.0
+offset_right = -207.0
+offset_bottom = 457.0
+text = "\"G\""
+label_settings = SubResource("LabelSettings_6feeu")
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="InstLabel2" type="Label" parent="."]
+offset_left = -518.0
+offset_top = -227.0
+offset_right = -15.0
+offset_bottom = -104.0
+text = "Experimenta cambiando los volúmenes de los instrumentos o deteniendo su reproducción."
+label_settings = SubResource("LabelSettings_6feeu")
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Bass" type="Sprite2D" parent="."]
+position = Vector2(-219, 261)
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("15_vpq52")
+
+[node name="Bongos" type="Sprite2D" parent="."]
+position = Vector2(-395, 260)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("16_vdcjv")
+
+[node name="Drums" type="Sprite2D" parent="."]
+position = Vector2(-309, 260)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("17_3f2rf")
+
+[node name="Guitar" type="Sprite2D" parent="."]
+position = Vector2(-489, 260)
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("18_cgtmn")
+script = ExtResource("18_i0emh")
+
+[node name="Shaker" type="Sprite2D" parent="."]
+position = Vector2(-129, 260)
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("19_s7e2k")
+
+[node name="InstLabel3" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = -2.3354
+anchor_top = -0.455285
+anchor_right = -2.3354
+anchor_bottom = -0.455285
+offset_left = -160.0
+offset_top = 344.0
+offset_right = 162.0
+offset_bottom = 467.0
+text = "\"S\""
+label_settings = SubResource("LabelSettings_6feeu")
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[connection signal="value_changed" from="GuitarSlider" to="GameManager/GuitarMain" method="_on_guitar_slider_value_changed"]
+[connection signal="value_changed" from="DrumsSlider" to="GameManager/Drums" method="_on_drums_slider_value_changed"]
+[connection signal="value_changed" from="BasePercSlider" to="GameManager/BasePerc" method="_on_drums_slider_value_changed"]
+[connection signal="value_changed" from="BassSlider" to="GameManager/Bass" method="_on_drums_slider_value_changed"]
+[connection signal="value_changed" from="ShakerSlider" to="GameManager/Shaker" method="_on_drums_slider_value_changed"]
