@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://dnotpjqdv1rrg"]
+
+[ext_resource type="Script" path="res://scripts/game_manager_2.gd" id="1_tsbj4"]
+[ext_resource type="AudioStream" uid="uid://b1mccluix2aql" path="res://assets/GuitarMain.mp3" id="2_57b3g"]
+[ext_resource type="AudioStream" uid="uid://cbrbjiqdjd25y" path="res://assets/Drums.mp3" id="3_osb3j"]
+[ext_resource type="AudioStream" uid="uid://duosg5jri6v7u" path="res://assets/BasePerc.mp3" id="4_u5n8j"]
+[ext_resource type="AudioStream" uid="uid://bbn8su5gq7vxr" path="res://assets/Bass.mp3" id="5_221np"]
+[ext_resource type="AudioStream" uid="uid://co45b1dvn1td8" path="res://assets/GuitarIntro.mp3" id="6_pgks4"]
+[ext_resource type="AudioStream" uid="uid://dvcq2ycikjk6x" path="res://assets/GuitarHarm.mp3" id="7_dvmrk"]
+[ext_resource type="AudioStream" uid="uid://fyvqvml0ngk4" path="res://assets/Shaker.mp3" id="8_q6j44"]
+
+[sub_resource type="GDScript" id="GDScript_jjvwx"]
+script/source = "extends Timer
+ 
+"
+
+[node name="Main" type="Node"]
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_tsbj4")
+
+[node name="GuitarMain" type="AudioStreamPlayer" parent="GameManager"]
+stream = ExtResource("2_57b3g")
+parameters/looping = true
+
+[node name="Drums" type="AudioStreamPlayer" parent="GameManager"]
+stream = ExtResource("3_osb3j")
+parameters/looping = true
+
+[node name="BasePerc" type="AudioStreamPlayer" parent="GameManager"]
+stream = ExtResource("4_u5n8j")
+parameters/looping = true
+
+[node name="Bass" type="AudioStreamPlayer" parent="GameManager"]
+stream = ExtResource("5_221np")
+parameters/looping = true
+
+[node name="GuitarIntro" type="AudioStreamPlayer" parent="GameManager"]
+stream = ExtResource("6_pgks4")
+parameters/looping = true
+
+[node name="GuitarHarm" type="AudioStreamPlayer" parent="GameManager"]
+stream = ExtResource("7_dvmrk")
+parameters/looping = true
+
+[node name="Shaker" type="AudioStreamPlayer" parent="GameManager"]
+stream = ExtResource("8_q6j44")
+volume_db = -4.0
+parameters/looping = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 0.568627, 0.301961, 1)
+offset_left = 330.0
+offset_top = -250.0
+offset_right = 610.0
+offset_bottom = -150.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "Volver a ensayar"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.085
+script = SubResource("GDScript_jjvwx")
+
+[connection signal="pressed" from="Button" to="GameManager" method="_on_button_pressed"]

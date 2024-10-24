@@ -1,0 +1,3 @@
+extends Node
+
+const LOOP_DURATION = 4.17391304347826
