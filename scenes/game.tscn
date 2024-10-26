@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dnotpjqdv1rrg"]
+[gd_scene load_steps=12 format=3 uid="uid://dnotpjqdv1rrg"]
 
 [ext_resource type="Script" path="res://scripts/game_manager_2.gd" id="1_tsbj4"]
 [ext_resource type="AudioStream" uid="uid://b1mccluix2aql" path="res://assets/GuitarMain.mp3" id="2_57b3g"]
@@ -8,6 +8,10 @@
 [ext_resource type="AudioStream" uid="uid://co45b1dvn1td8" path="res://assets/GuitarIntro.mp3" id="6_pgks4"]
 [ext_resource type="AudioStream" uid="uid://dvcq2ycikjk6x" path="res://assets/GuitarHarm.mp3" id="7_dvmrk"]
 [ext_resource type="AudioStream" uid="uid://fyvqvml0ngk4" path="res://assets/Shaker.mp3" id="8_q6j44"]
+[ext_resource type="Texture2D" uid="uid://b0opjtn2x0dng" path="res://sprites/Guitar.svg" id="9_qibou"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b8idn"]
+font_size = 32
 
 [sub_resource type="GDScript" id="GDScript_jjvwx"]
 script/source = "extends Timer
@@ -48,20 +52,89 @@ stream = ExtResource("8_q6j44")
 volume_db = -4.0
 parameters/looping = true
 
+[node name="Sprite" type="Sprite2D" parent="GameManager"]
+position = Vector2(0, 100)
+scale = Vector2(0.249375, 0.249375)
+texture = ExtResource("9_qibou")
+
+[node name="NextLabel" type="Label" parent="GameManager"]
+modulate = Color(0.47451, 0.0235294, 0.0235294, 1)
+anchors_preset = -1
+anchor_left = -0.146
+anchor_top = -0.0091111
+anchor_right = -0.0202546
+anchor_bottom = 0.048
+offset_left = -295.712
+offset_top = 103.856
+offset_right = -152.0
+offset_bottom = 113.344
+text = "Siguiente instrumento:"
+label_settings = SubResource("LabelSettings_b8idn")
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ResultLabel" type="Label" parent="GameManager"]
+visible = false
+modulate = Color(0.47451, 0.0235294, 0.0235294, 1)
+anchors_preset = -1
+anchor_left = -0.0202546
+anchor_top = -0.0091111
+anchor_right = -0.0142176
+anchor_bottom = 0.194922
+offset_left = 295.0
+offset_top = 110.856
+offset_right = 663.568
+offset_bottom = 5.536
+text = "Puntuación respecto al tiempo:"
+label_settings = SubResource("LabelSettings_b8idn")
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Button" type="Button" parent="."]
 modulate = Color(1, 0.568627, 0.301961, 1)
-offset_left = 330.0
-offset_top = -250.0
-offset_right = 610.0
-offset_bottom = -150.0
+offset_left = -718.0
+offset_top = -336.0
+offset_right = -438.0
+offset_bottom = -236.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 28
 text = "Volver a ensayar"
+
+[node name="SubmitButton" type="Button" parent="."]
+modulate = Color(1, 0.568627, 0.301961, 1)
+offset_left = -139.0
+offset_top = 281.0
+offset_right = 141.0
+offset_bottom = 381.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "¡Listo!"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.085
 script = SubResource("GDScript_jjvwx")
 
+[node name="Label" type="Label" parent="."]
+modulate = Color(0.47451, 0.0235294, 0.0235294, 1)
+anchors_preset = -1
+anchor_left = -0.0202546
+anchor_top = -0.0091111
+anchor_right = 0.00415277
+anchor_bottom = 0.00823045
+offset_left = 240.0
+offset_top = -424.144
+offset_right = 763.824
+offset_bottom = -60.0
+text = "Presiona la barra de Espacio para agregar cada instrumento.
+
+Si quieres retraer un instrumento, presionala tecla U.
+
+Cuando creas que la pieza está a tiempo, presiona el botón."
+label_settings = SubResource("LabelSettings_b8idn")
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
 [connection signal="pressed" from="Button" to="GameManager" method="_on_button_pressed"]
+[connection signal="pressed" from="SubmitButton" to="GameManager" method="_on_submit_button_pressed"]

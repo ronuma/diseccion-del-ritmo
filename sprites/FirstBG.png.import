@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dbtas714c60hx"
-path="res://.godot/imported/FirstBG.png-7d5da2b31d5d20eac2d2b40be911897f.ctex"
+path="res://.godot/imported/FirstBG.png-35b297301844e530fb3e1176e6686f8d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/FirstBG.png"
-dest_files=["res://.godot/imported/FirstBG.png-7d5da2b31d5d20eac2d2b40be911897f.ctex"]
+source_file="res://sprites/FirstBG.png"
+dest_files=["res://.godot/imported/FirstBG.png-35b297301844e530fb3e1176e6686f8d.ctex"]
 
 [params]
 
