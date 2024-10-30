@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://dnotpjqdv1rrg"]
 
-[ext_resource type="Script" path="res://scripts/game_manager_2.gd" id="1_tsbj4"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_tsbj4"]
 [ext_resource type="AudioStream" uid="uid://b1mccluix2aql" path="res://assets/GuitarMain.mp3" id="2_57b3g"]
 [ext_resource type="AudioStream" uid="uid://cbrbjiqdjd25y" path="res://assets/Drums.mp3" id="3_osb3j"]
 [ext_resource type="AudioStream" uid="uid://duosg5jri6v7u" path="res://assets/BasePerc.mp3" id="4_u5n8j"]
@@ -131,7 +131,9 @@ text = "Presiona la barra de Espacio para agregar cada instrumento.
 
 Si quieres retraer un instrumento, presionala tecla U.
 
-Cuando creas que la pieza está a tiempo, presiona el botón."
+Cuando creas que la pieza está a tiempo, presiona el botón.
+
+Para reiniciar, presiona la tecla R."
 label_settings = SubResource("LabelSettings_b8idn")
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true

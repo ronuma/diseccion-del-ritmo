@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://c8kn7lcdsspc3"]
 
 [ext_resource type="Texture2D" uid="uid://dbtas714c60hx" path="res://sprites/FirstBG.png" id="1_gt2o2"]
-[ext_resource type="Script" path="res://scripts/game_manager.gd" id="2_24nxl"]
+[ext_resource type="Script" path="res://scripts/rehearsal_manager.gd" id="2_24nxl"]
 [ext_resource type="AudioStream" uid="uid://cbrbjiqdjd25y" path="res://assets/Drums.mp3" id="3_1fwbs"]
 [ext_resource type="Script" path="res://scripts/drums.gd" id="4_qxv8n"]
 [ext_resource type="AudioStream" uid="uid://duosg5jri6v7u" path="res://assets/BasePerc.mp3" id="5_woanj"]
