@@ -1,0 +1,143 @@
+[gd_scene load_steps=12 format=3 uid="uid://b5iadavdf8rsx"]
+
+[ext_resource type="Script" path="res://scripts/console_manager.gd" id="1_f2hfr"]
+[ext_resource type="PackedScene" uid="uid://bi3tjxd38u5a7" path="res://scenes/track.tscn" id="1_kudgv"]
+[ext_resource type="AudioStream" uid="uid://b1mccluix2aql" path="res://assets/GuitarMain.mp3" id="2_wca1p"]
+[ext_resource type="Texture2D" uid="uid://c4i27ryylb3r0" path="res://sprites/Shaker.svg" id="3_85rqd"]
+[ext_resource type="AudioStream" uid="uid://fyvqvml0ngk4" path="res://assets/Shaker.mp3" id="4_xer0s"]
+[ext_resource type="Texture2D" uid="uid://t7s86302p4ux" path="res://sprites/Bongos.svg" id="5_qhbac"]
+[ext_resource type="AudioStream" uid="uid://cbrbjiqdjd25y" path="res://assets/Bongos.mp3" id="6_mdh7k"]
+[ext_resource type="Texture2D" uid="uid://ctu6xki2b3vxe" path="res://sprites/Drums.svg" id="7_x4id0"]
+[ext_resource type="AudioStream" uid="uid://duosg5jri6v7u" path="res://assets/Drums.mp3" id="8_04eij"]
+[ext_resource type="Texture2D" uid="uid://p2tuldt0ghxr" path="res://sprites/Bass.svg" id="9_m6jei"]
+[ext_resource type="AudioStream" uid="uid://bbn8su5gq7vxr" path="res://assets/Bass.mp3" id="10_rfgb5"]
+
+[node name="Console" type="Node2D"]
+script = ExtResource("1_f2hfr")
+
+[node name="Guitar" parent="." instance=ExtResource("1_kudgv")]
+position = Vector2(-280, 160)
+
+[node name="Slider" parent="Guitar" index="0"]
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite" parent="Guitar" index="1"]
+position = Vector2(11, -137)
+
+[node name="Label" parent="Guitar" index="2"]
+offset_left = -4.0
+offset_top = -57.0
+offset_right = 26.0
+offset_bottom = -12.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player" parent="Guitar" index="3"]
+stream = ExtResource("2_wca1p")
+autoplay = true
+parameters/looping = true
+
+[node name="Shaker" parent="." instance=ExtResource("1_kudgv")]
+position = Vector2(-140, 160)
+
+[node name="Slider" parent="Shaker" index="0"]
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite" parent="Shaker" index="1"]
+position = Vector2(11, -137)
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("3_85rqd")
+
+[node name="Label" parent="Shaker" index="2"]
+offset_left = -4.0
+offset_top = -57.0
+offset_right = 26.0
+offset_bottom = -12.0
+text = "S"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player" parent="Shaker" index="3"]
+stream = ExtResource("4_xer0s")
+autoplay = true
+parameters/looping = true
+
+[node name="Bongos" parent="." instance=ExtResource("1_kudgv")]
+position = Vector2(-8, 160)
+
+[node name="Slider" parent="Bongos" index="0"]
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite" parent="Bongos" index="1"]
+position = Vector2(11, -137)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_qhbac")
+
+[node name="Label" parent="Bongos" index="2"]
+offset_left = -4.0
+offset_top = -57.0
+offset_right = 26.0
+offset_bottom = -12.0
+text = "B"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player" parent="Bongos" index="3"]
+stream = ExtResource("6_mdh7k")
+autoplay = true
+parameters/looping = true
+
+[node name="Drums" parent="." instance=ExtResource("1_kudgv")]
+position = Vector2(140, 160)
+
+[node name="Slider" parent="Drums" index="0"]
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite" parent="Drums" index="1"]
+position = Vector2(11, -137)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_x4id0")
+
+[node name="Label" parent="Drums" index="2"]
+offset_left = -4.0
+offset_top = -57.0
+offset_right = 26.0
+offset_bottom = -12.0
+text = "D"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player" parent="Drums" index="3"]
+stream = ExtResource("8_04eij")
+autoplay = true
+parameters/looping = true
+
+[node name="Bass" parent="." instance=ExtResource("1_kudgv")]
+position = Vector2(280, 160)
+
+[node name="Slider" parent="Bass" index="0"]
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite" parent="Bass" index="1"]
+position = Vector2(11, -137)
+texture = ExtResource("9_m6jei")
+
+[node name="Label" parent="Bass" index="2"]
+offset_left = -4.0
+offset_top = -57.0
+offset_right = 26.0
+offset_bottom = -12.0
+text = "C"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player" parent="Bass" index="3"]
+stream = ExtResource("10_rfgb5")
+autoplay = true
+parameters/looping = true
+
+[editable path="Guitar"]
+[editable path="Shaker"]
+[editable path="Bongos"]
+[editable path="Drums"]
+[editable path="Bass"]
