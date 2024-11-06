@@ -8,11 +8,14 @@ const signals = {
 	"'Espacio'": "ui_accept"
 }
 
+const midi_channels = {}
+
 @onready var player = $Player
 @onready var label = $Label
 
 var player_signal
 var free_mode
+var prev_midi_message = null
 
 func _on_slider_value_changed(value: float) -> void:
 	if value == -40.0:

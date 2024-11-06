@@ -33,6 +33,8 @@ func _on_button_pressed() -> void:
 	# Change scene to live when button is pressed
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
 
+func _ready() -> void:
+	pass
 
 func _process(_delta: float) -> void:
 	for item in audio_data:
