@@ -1,10 +1,10 @@
 extends Node
 @export var free_mode: bool
-# TODO: refactor data structure to be be'er
-@onready var tracks = [$Guitar, $Shaker, $Bongos, $Drums, $Bass]
+@export var live_mode: bool
+# Rehearsal variables
 var ref_time = 0
 @onready var ref_player = $Guitar/Player
-
+# TODO: Can I simplify?
 # MIDI controller number mappings to their node index
 const mappings = {
 	24: 0,
@@ -13,6 +13,7 @@ const mappings = {
 	27: 3,
 	28: 4
 }
+# Note playing mappings to node index
 const on_off_maps = {
 	43: 0,
 	48: 1,
@@ -20,43 +21,45 @@ const on_off_maps = {
 	49: 3,
 	36: 4
 }
-var previous_midi_message = null
 
+@onready var nodes = [$Guitar, $Bongos, $Drums, $Shaker,  $Bass]
+func _ready():
+	var new_nodes = []
+	for node in nodes:
+		var player = node.get_child(3)
+		var slider = node.get_child(0)
+		new_nodes.push_back({
+			'player': player, 'slider': slider
+		})
+	nodes = new_nodes
+
+func assign_new_ref():
+	# Ensure ref is always a playing instrument
+	for node in nodes:
+		if node.player.playing:
+			ref_player = node.player
+			break
+
+var previous_midi_message = null
 func _input(e):
 	if e is InputEventMIDI:
 		if e.message != previous_midi_message:
 			previous_midi_message = e.message
+			# Physical slider value changed, handle signal
 			if e.controller_number > 23 and e.controller_number < 29:
 				var val = remap(e.controller_value, 0, 127, -40, 20)
-				var node = tracks[mappings[e.controller_number]]
-				node.get_child(3).volume_db = val if val > -40.0 else -INF
-				node.get_child(0).value = val
+				var node = nodes[mappings[e.controller_number]]
+				node.player.volume_db = val if val > -40.0 else -INF
+				node.slider.value = val
+			# Note was pressed, handle on/off signal
 			if e.message == 9:
 				if on_off_maps.has(e.pitch):
-					var node = tracks[on_off_maps[e.pitch]]
-					if node:
-						var player = node.get_child(3)
-						if player.playing:
-							player.stop()
-						else:
-							player.play(0 if free_mode else ref_player.get_playback_position())
-						if not free_mode:
-							assign_new_ref()
-
-func assign_new_ref():
-	# Ensure ref is always a playing instrument
-	for node in tracks:
-		if node.get_child(3).playing:
-			ref_player = node.get_child(3)
-			break
-	
-func _print_midi_info(midi_event):
-	print(midi_event)
-	print("Channel ", midi_event.channel)
-	print("Message ", midi_event.message)
-	print("Pitch ", midi_event.pitch)
-	print("Velocity ", midi_event.velocity)
-	print("Instrument ", midi_event.instrument)
-	print("Pressure ", midi_event.pressure)
-	print("Controller number: ", midi_event.controller_number)
-	print("Controller value: ", midi_event.controller_value)
+					var node = nodes[on_off_maps[e.pitch]]
+					var player = node.player
+					if player.playing:
+						player.stop()
+					else:
+						# Play from start if in free mode, else play from ref
+						player.play(0 if free_mode else ref_player.get_playback_position())
+					if not free_mode:
+						assign_new_ref()

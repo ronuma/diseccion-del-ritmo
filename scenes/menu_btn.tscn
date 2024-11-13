@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://diinh1xaj70i3"]
+
+[ext_resource type="Script" path="res://scripts/menu_btn.gd" id="1_hbmfj"]
+
+[node name="Button" type="Button"]
+modulate = Color(1, 0.568627, 0.301961, 1)
+offset_left = -718.0
+offset_top = -336.0
+offset_right = -438.0
+offset_bottom = -236.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "Menú principal"
+script = ExtResource("1_hbmfj")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

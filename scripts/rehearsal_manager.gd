@@ -12,7 +12,7 @@ var ref_time = 0
 	"signal": "shaker",
 	"midi_map": 48},
 	{"node": $Console/Guitar/Player,
-	"signal": "ui_accept",
+	"signal": "guitar",
 	"midi_map": 43},
 	{"node": $Console/Bass/Player,
 	"signal": "bass"}]
@@ -33,7 +33,7 @@ func assign_new_ref(node: AudioStreamPlayer):
 
 func _on_button_pressed() -> void:
 	# Change scene to live when button is pressed
-	get_tree().change_scene_to_file("res://scenes/game.tscn")
+	get_tree().change_scene_to_file("res://scenes/live.tscn")
 
 func _process(_delta: float) -> void:
 	for item in audio_data:

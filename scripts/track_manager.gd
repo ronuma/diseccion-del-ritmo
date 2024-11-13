@@ -8,10 +8,9 @@ const signals = {
 	"'Espacio'": "ui_accept"
 }
 
-const midi_channels = {}
-
 @onready var player = $Player
 @onready var label = $Label
+@onready var indicator = $Indicator
 
 var player_signal
 var free_mode
@@ -22,6 +21,12 @@ func _on_slider_value_changed(value: float) -> void:
 		player.volume_db = -INF
 		return
 	player.volume_db = value
+	
+func handle_playing_indicator():
+	if player.playing:
+		indicator.texture = load("res://sprites/Play.png")
+	else:
+		indicator.texture = load("res://sprites/Mute.png")
 
 func _ready() -> void:
 	player_signal = signals[label.text]
@@ -34,3 +39,5 @@ func _process(_delta: float) -> void:
 				player.stop()
 			else:
 				player.play()
+	
+	handle_playing_indicator()

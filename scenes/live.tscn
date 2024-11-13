@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dnotpjqdv1rrg"]
+[gd_scene load_steps=13 format=3 uid="uid://dnotpjqdv1rrg"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_tsbj4"]
 [ext_resource type="AudioStream" uid="uid://b1mccluix2aql" path="res://assets/GuitarMain.mp3" id="2_57b3g"]
@@ -9,11 +9,17 @@
 [ext_resource type="AudioStream" uid="uid://dvcq2ycikjk6x" path="res://assets/GuitarHarm.mp3" id="7_dvmrk"]
 [ext_resource type="AudioStream" uid="uid://fyvqvml0ngk4" path="res://assets/Shaker.mp3" id="8_q6j44"]
 [ext_resource type="Texture2D" uid="uid://b0opjtn2x0dng" path="res://sprites/Guitar.svg" id="9_qibou"]
+[ext_resource type="PackedScene" uid="uid://diinh1xaj70i3" path="res://scenes/menu_btn.tscn" id="10_l2unw"]
+[ext_resource type="PackedScene" uid="uid://b5iadavdf8rsx" path="res://scenes/console.tscn" id="11_mli2n"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_b8idn"]
 font_size = 32
 
 [node name="Main" type="Node2D"]
+
+[node name="Console" parent="." instance=ExtResource("11_mli2n")]
+position = Vector2(1.00002, -266)
+live_mode = true
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("1_tsbj4")
@@ -48,7 +54,7 @@ volume_db = -4.0
 parameters/looping = true
 
 [node name="Sprite" type="Sprite2D" parent="GameManager"]
-position = Vector2(0, 100)
+position = Vector2(-995, -270)
 scale = Vector2(0.249375, 0.249375)
 texture = ExtResource("9_qibou")
 
@@ -59,10 +65,10 @@ anchor_left = -0.146
 anchor_top = -0.0091111
 anchor_right = -0.0202546
 anchor_bottom = 0.048
-offset_left = -295.712
-offset_top = 103.856
-offset_right = -152.0
-offset_bottom = 113.344
+offset_left = -1030.5
+offset_top = -247.689
+offset_right = -886.784
+offset_bottom = -238.201
 text = "Siguiente instrumento:"
 label_settings = SubResource("LabelSettings_b8idn")
 autowrap_mode = 2
@@ -87,22 +93,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Button" type="Button" parent="."]
-modulate = Color(1, 0.568627, 0.301961, 1)
-offset_left = -718.0
-offset_top = -336.0
-offset_right = -438.0
-offset_bottom = -236.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 28
-text = "Volver a ensayar"
-
 [node name="SubmitButton" type="Button" parent="."]
 modulate = Color(1, 0.568627, 0.301961, 1)
-offset_left = -139.0
-offset_top = 281.0
-offset_right = 141.0
-offset_bottom = 381.0
+offset_left = -1033.0
+offset_top = 208.0
+offset_right = -753.0
+offset_bottom = 308.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 28
 text = "Comprobar tiempo"
@@ -114,10 +110,10 @@ anchor_left = -0.0202546
 anchor_top = -0.0091111
 anchor_right = 0.00415277
 anchor_bottom = 0.00823045
-offset_left = 240.0
-offset_top = -424.144
-offset_right = 763.824
-offset_bottom = -60.0
+offset_left = 961.0
+offset_top = -632.0
+offset_right = 1484.82
+offset_bottom = -155.0
 text = "Presiona la barra de Espacio para agregar cada instrumento.
 
 Si quieres retraer un instrumento, presionala tecla U.
@@ -129,5 +125,10 @@ label_settings = SubResource("LabelSettings_b8idn")
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="Button" to="GameManager" method="_on_button_pressed"]
+[node name="MenuBtn" parent="." instance=ExtResource("10_l2unw")]
+offset_left = -1079.0
+offset_top = -575.0
+offset_right = -799.0
+offset_bottom = -475.0
+
 [connection signal="pressed" from="SubmitButton" to="GameManager" method="_on_submit_button_pressed"]

@@ -5,7 +5,7 @@ var loop_duration = globals.LOOP_DURATION
 var node_to_stop
 var node_to_play
 
-@onready var audio_nodes = [$GuitarMain, $BasePerc, $Shaker, $Drums, $Bass]
+@onready var audio_nodes = [$GuitarMain, $BasePerc, $Drums, $Shaker, $Bass]
 var sprite_filenames = ["Guitar.svg", "Drums.svg", "Shaker.svg", "Bongos.svg", "Bass.svg"]
 
 var i = 0
@@ -70,7 +70,7 @@ func update_sprite():
 
 func _on_button_pressed() -> void:
 	# Change scene to live when button is pressed
-	get_tree().change_scene_to_file("res://scenes/rehearsal.tscn")
+	get_tree().change_scene_to_file("res://scenes/menu.tscn")
 
 var bar_duration = loop_duration / 2
 const PASS_RANGE = 0.05

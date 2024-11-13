@@ -1,17 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8kn7lcdsspc3"]
+[gd_scene load_steps=7 format=3 uid="uid://c8kn7lcdsspc3"]
 
 [ext_resource type="Texture2D" uid="uid://dbtas714c60hx" path="res://sprites/FirstBG.png" id="1_gt2o2"]
 [ext_resource type="Script" path="res://scripts/rehearsal_manager.gd" id="2_24nxl"]
 [ext_resource type="PackedScene" uid="uid://b5iadavdf8rsx" path="res://scenes/console.tscn" id="2_xkjpr"]
+[ext_resource type="PackedScene" uid="uid://diinh1xaj70i3" path="res://scenes/menu_btn.tscn" id="4_w4t33"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6feeu"]
-font_size = 32
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_pmgq1"]
+font_size = 100
 
 [node name="Main" type="Node2D"]
 script = ExtResource("2_24nxl")
+metadata/_edit_horizontal_guides_ = [-712.0]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-14, 2)
 
 [node name="InstructionLabel" type="Label" parent="."]
 modulate = Color(0.47451, 0.0235294, 0.0235294, 1)
@@ -20,25 +24,40 @@ anchor_left = -0.0270972
 anchor_top = -0.121
 anchor_right = -0.0270972
 anchor_bottom = -0.0946502
-offset_left = -765.176
-offset_top = -303.388
-offset_right = -253.176
-offset_bottom = 3.99999
-text = "Experimenta cambiando los volúmenes de los instrumentos o deteniendo su reproducción.
-
-Cuando te sientas listo para tocar en vivo, ¡adelante! Podrás volver a ensayar aquí :)"
+offset_left = -716.0
+offset_top = -678.0
+offset_right = -145.0
+offset_bottom = -371.0
+text = "Cambia el volumen de los instrumentos moviendo los faders de tu lado izquierdo (los primeros 5)"
 label_settings = SubResource("LabelSettings_6feeu")
 autowrap_mode = 2
-metadata/_edit_use_anchors_ = true
+
+[node name="InstructionLabel2" type="Label" parent="."]
+modulate = Color(0.47451, 0.0235294, 0.0235294, 1)
+anchors_preset = -1
+anchor_left = -0.0270972
+anchor_top = -0.121
+anchor_right = -0.0270972
+anchor_bottom = -0.0946502
+offset_left = 125.0
+offset_top = -711.0
+offset_right = 696.0
+offset_bottom = -384.0
+text = "Silencia/reproduce los instrumentos presionando los primeros cinco botones de tu lado derecho,  (los primeros 5)"
+label_settings = SubResource("LabelSettings_6feeu")
+horizontal_alignment = 2
+autowrap_mode = 2
 
 [node name="Console" parent="." instance=ExtResource("2_xkjpr")]
+position = Vector2(3, -174)
 
 [node name="Button" type="Button" parent="."]
+visible = false
 modulate = Color(1, 0.568627, 0.301961, 1)
-offset_left = 330.0
-offset_top = -250.0
-offset_right = 610.0
-offset_bottom = -150.0
+offset_left = 454.0
+offset_top = 604.0
+offset_right = 734.0
+offset_bottom = 704.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 28
 text = "Tocar en vivo ->"
@@ -59,5 +78,27 @@ visible = false
 position = Vector2(166, 1491)
 scale = Vector2(0.458268, 0.391226)
 texture = ExtResource("1_gt2o2")
+
+[node name="MenuBtn" parent="." instance=ExtResource("4_w4t33")]
+offset_left = -726.0
+offset_top = 680.0
+offset_right = -446.0
+offset_bottom = 780.0
+
+[node name="TitleLabel" type="Label" parent="."]
+modulate = Color(0.47451, 0.0235294, 0.0235294, 1)
+anchors_preset = -1
+anchor_left = -0.0270972
+anchor_top = -0.121
+anchor_right = -0.0270972
+anchor_bottom = -0.0946502
+offset_left = -539.0
+offset_top = -899.0
+offset_right = 536.0
+offset_bottom = -745.0
+text = "Bienvenido al ensayo"
+label_settings = SubResource("LabelSettings_pmgq1")
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

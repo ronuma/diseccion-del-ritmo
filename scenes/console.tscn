@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://b5iadavdf8rsx"]
+[gd_scene load_steps=13 format=3 uid="uid://b5iadavdf8rsx"]
 
 [ext_resource type="Script" path="res://scripts/console_manager.gd" id="1_f2hfr"]
 [ext_resource type="PackedScene" uid="uid://bi3tjxd38u5a7" path="res://scenes/track.tscn" id="1_kudgv"]
+[ext_resource type="Texture2D" uid="uid://maiu2phvd0oo" path="res://sprites/Console.png" id="1_lt2fu"]
 [ext_resource type="AudioStream" uid="uid://b1mccluix2aql" path="res://assets/GuitarMain.mp3" id="2_wca1p"]
 [ext_resource type="Texture2D" uid="uid://c4i27ryylb3r0" path="res://sprites/Shaker.svg" id="3_85rqd"]
 [ext_resource type="AudioStream" uid="uid://fyvqvml0ngk4" path="res://assets/Shaker.mp3" id="4_xer0s"]
@@ -13,16 +14,22 @@
 [ext_resource type="AudioStream" uid="uid://bbn8su5gq7vxr" path="res://assets/Bass.mp3" id="10_rfgb5"]
 
 [node name="Console" type="Node2D"]
+scale = Vector2(1.3, 1.3)
 script = ExtResource("1_f2hfr")
 
+[node name="BG" type="Sprite2D" parent="."]
+position = Vector2(0, 225)
+scale = Vector2(0.6, 0.778)
+texture = ExtResource("1_lt2fu")
+
 [node name="Guitar" parent="." instance=ExtResource("1_kudgv")]
-position = Vector2(-280, 160)
+position = Vector2(-350, 160)
 
 [node name="Slider" parent="Guitar" index="0"]
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite" parent="Guitar" index="1"]
-position = Vector2(11, -137)
+position = Vector2(0, -137)
 
 [node name="Label" parent="Guitar" index="2"]
 offset_left = -4.0
@@ -37,40 +44,14 @@ stream = ExtResource("2_wca1p")
 autoplay = true
 parameters/looping = true
 
-[node name="Shaker" parent="." instance=ExtResource("1_kudgv")]
-position = Vector2(-140, 160)
-
-[node name="Slider" parent="Shaker" index="0"]
-metadata/_edit_use_anchors_ = true
-
-[node name="Sprite" parent="Shaker" index="1"]
-position = Vector2(11, -137)
-scale = Vector2(0.13, 0.13)
-texture = ExtResource("3_85rqd")
-
-[node name="Label" parent="Shaker" index="2"]
-offset_left = -4.0
-offset_top = -57.0
-offset_right = 26.0
-offset_bottom = -12.0
-text = "S"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Player" parent="Shaker" index="3"]
-stream = ExtResource("4_xer0s")
-autoplay = true
-parameters/looping = true
-
 [node name="Bongos" parent="." instance=ExtResource("1_kudgv")]
-position = Vector2(-8, 160)
+position = Vector2(-175, 160)
 
 [node name="Slider" parent="Bongos" index="0"]
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite" parent="Bongos" index="1"]
-position = Vector2(11, -137)
-scale = Vector2(0.2, 0.2)
+position = Vector2(0, -137)
 texture = ExtResource("5_qhbac")
 
 [node name="Label" parent="Bongos" index="2"]
@@ -88,14 +69,13 @@ autoplay = true
 parameters/looping = true
 
 [node name="Drums" parent="." instance=ExtResource("1_kudgv")]
-position = Vector2(140, 160)
+position = Vector2(0, 160)
 
 [node name="Slider" parent="Drums" index="0"]
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite" parent="Drums" index="1"]
-position = Vector2(11, -137)
-scale = Vector2(0.2, 0.2)
+position = Vector2(0, -136)
 texture = ExtResource("7_x4id0")
 
 [node name="Label" parent="Drums" index="2"]
@@ -112,14 +92,40 @@ stream = ExtResource("8_04eij")
 autoplay = true
 parameters/looping = true
 
+[node name="Shaker" parent="." instance=ExtResource("1_kudgv")]
+position = Vector2(175, 160)
+
+[node name="Slider" parent="Shaker" index="0"]
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite" parent="Shaker" index="1"]
+position = Vector2(2, -135)
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("3_85rqd")
+
+[node name="Label" parent="Shaker" index="2"]
+offset_left = -4.0
+offset_top = -57.0
+offset_right = 26.0
+offset_bottom = -12.0
+text = "S"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player" parent="Shaker" index="3"]
+stream = ExtResource("4_xer0s")
+autoplay = true
+parameters/looping = true
+
 [node name="Bass" parent="." instance=ExtResource("1_kudgv")]
-position = Vector2(280, 160)
+position = Vector2(350, 160)
 
 [node name="Slider" parent="Bass" index="0"]
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite" parent="Bass" index="1"]
-position = Vector2(11, -137)
+position = Vector2(0, -137)
+scale = Vector2(0.18, 0.18)
 texture = ExtResource("9_m6jei")
 
 [node name="Label" parent="Bass" index="2"]
@@ -137,7 +143,7 @@ autoplay = true
 parameters/looping = true
 
 [editable path="Guitar"]
-[editable path="Shaker"]
 [editable path="Bongos"]
 [editable path="Drums"]
+[editable path="Shaker"]
 [editable path="Bass"]
