@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cv27wdqcgx5ua"]
+[gd_scene load_steps=7 format=3 uid="uid://cv27wdqcgx5ua"]
 
+[ext_resource type="Script" path="res://scripts/free.gd" id="1_hgpbt"]
 [ext_resource type="PackedScene" uid="uid://b5iadavdf8rsx" path="res://scenes/console.tscn" id="1_xg61e"]
 [ext_resource type="PackedScene" uid="uid://diinh1xaj70i3" path="res://scenes/menu_btn.tscn" id="2_k83aj"]
 
@@ -15,10 +16,10 @@ shadow_offset = Vector2(30, 30)
 
 [node name="Main" type="Node2D"]
 position = Vector2(0, 128)
+script = ExtResource("1_hgpbt")
 
 [node name="Console" parent="." instance=ExtResource("1_xg61e")]
 position = Vector2(0, -173)
-free_mode = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

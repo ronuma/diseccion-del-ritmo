@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c8kn7lcdsspc3"]
 
 [ext_resource type="Texture2D" uid="uid://dbtas714c60hx" path="res://sprites/FirstBG.png" id="1_gt2o2"]
-[ext_resource type="Script" path="res://scripts/rehearsal_manager.gd" id="2_24nxl"]
+[ext_resource type="Script" path="res://scripts/rehearsal.gd" id="2_24nxl"]
 [ext_resource type="PackedScene" uid="uid://b5iadavdf8rsx" path="res://scenes/console.tscn" id="2_xkjpr"]
 [ext_resource type="PackedScene" uid="uid://diinh1xaj70i3" path="res://scenes/menu_btn.tscn" id="4_w4t33"]
 
@@ -11,7 +11,7 @@ font_size = 40
 [sub_resource type="LabelSettings" id="LabelSettings_pmgq1"]
 font_size = 100
 
-[node name="Main" type="Node2D"]
+[node name="RehearsalRoot" type="Node2D"]
 script = ExtResource("2_24nxl")
 metadata/_edit_horizontal_guides_ = [-712.0]
 
@@ -39,11 +39,11 @@ anchor_left = -0.0270972
 anchor_top = -0.121
 anchor_right = -0.0270972
 anchor_bottom = -0.0946502
-offset_left = 125.0
-offset_top = -711.0
-offset_right = 696.0
-offset_bottom = -384.0
-text = "Silencia/reproduce los instrumentos presionando los primeros cinco botones de tu lado derecho,  (los primeros 5)"
+offset_left = 130.0
+offset_top = -667.0
+offset_right = 701.0
+offset_bottom = -340.0
+text = "Silencia/reproduce los instrumentos presionando los primeros cinco botones de tu lado derecho"
 label_settings = SubResource("LabelSettings_6feeu")
 horizontal_alignment = 2
 autowrap_mode = 2

@@ -1,9 +1,16 @@
 extends Node
 
-const LOOP_DURATION = 4.17391304347826
+const loop_duration = 4.17391304347826
+const pass_range = 0.5
+var midi_connected = false
 
 func _ready() -> void:
 	OS.open_midi_inputs()
+	if len(OS.get_connected_midi_inputs()) > 0:
+		midi_connected = true
+	
+func _exit():
+	OS.close_midi_inputs()
 
 #func _print_midi_info(midi_event):
 	#print(midi_event)
@@ -23,8 +30,6 @@ func _ready() -> void:
 			#previous_midi_message = e.message
 			#_print_midi_info(e)
 
-func _exit():
-	OS.close_midi_inputs()
 
 #func transform_value(val: float):
 #const MAX_IMG_MODULATION = 0.7
@@ -40,3 +45,9 @@ func _exit():
 	#else:
 		#var v = transform_value(ref_time)
 		#bg.modulate = Color(v,v,v)
+		
+# How to get the current time
+#var elapsed = 0
+#
+#func _process(delta: float) -> void:
+	#elapsed += delta

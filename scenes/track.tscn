@@ -1,14 +1,15 @@
 [gd_scene load_steps=6 format=3 uid="uid://bi3tjxd38u5a7"]
 
-[ext_resource type="Script" path="res://scripts/track_manager.gd" id="1_mr10o"]
+[ext_resource type="Script" path="res://scripts/track.gd" id="1_mr10o"]
 [ext_resource type="Texture2D" uid="uid://b0opjtn2x0dng" path="res://sprites/Guitar.svg" id="2_oh1y3"]
 [ext_resource type="Texture2D" uid="uid://cs16umqjyi58a" path="res://sprites/Play.png" id="3_l50kt"]
 [ext_resource type="Texture2D" uid="uid://dftch5lxvhcn2" path="res://assets/Correct.jpeg" id="4_fdm1d"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_aqap8"]
-font_size = 32
+font_size = 40
 
 [node name="Track" type="Node2D"]
+position = Vector2(1407, 808)
 script = ExtResource("1_mr10o")
 
 [node name="Slider" type="VSlider" parent="."]
@@ -19,6 +20,7 @@ offset_bottom = 340.0
 min_value = -40.0
 max_value = 20.0
 step = 0.1
+metadata/_edit_use_anchors_ = true
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(27, -148)
@@ -26,16 +28,15 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_oh1y3")
 
 [node name="Label" type="Label" parent="."]
-visible = false
 modulate = Color(0.47451, 0.0235294, 0.0235294, 1)
 anchors_preset = -1
 anchor_top = 0.389
 anchor_right = 0.149
 anchor_bottom = 0.435
-offset_left = 356.0
-offset_top = -63.0
-offset_right = 357.0
-offset_bottom = -18.0
+offset_left = -106.0
+offset_top = -27.0
+offset_right = -77.0
+offset_bottom = 28.0
 text = "C"
 label_settings = SubResource("LabelSettings_aqap8")
 autowrap_mode = 2

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dnotpjqdv1rrg"]
 
-[ext_resource type="Script" path="res://scripts/live_manager.gd" id="1_gg4bk"]
+[ext_resource type="Script" path="res://scripts/live.gd" id="1_gg4bk"]
 [ext_resource type="PackedScene" uid="uid://diinh1xaj70i3" path="res://scenes/menu_btn.tscn" id="10_l2unw"]
 [ext_resource type="PackedScene" uid="uid://b5iadavdf8rsx" path="res://scenes/console.tscn" id="11_mli2n"]
 
@@ -49,7 +49,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Console" parent="." instance=ExtResource("11_mli2n")]
 position = Vector2(1.00002, -266)
-live_mode = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -91,3 +90,15 @@ text = "A tocar en vivo"
 label_settings = SubResource("LabelSettings_4fkir")
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="RestartBtn" type="Button" parent="."]
+modulate = Color(1, 0.568627, 0.301961, 1)
+offset_left = 454.0
+offset_top = 604.0
+offset_right = 734.0
+offset_bottom = 704.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "Reiniciar"
+
+[connection signal="pressed" from="RestartBtn" to="." method="_on_restart_btn_pressed"]
