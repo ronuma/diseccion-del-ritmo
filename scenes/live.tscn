@@ -1,80 +1,36 @@
-[gd_scene load_steps=13 format=3 uid="uid://dnotpjqdv1rrg"]
+[gd_scene load_steps=6 format=3 uid="uid://dnotpjqdv1rrg"]
 
-[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_tsbj4"]
-[ext_resource type="AudioStream" uid="uid://b1mccluix2aql" path="res://assets/GuitarMain.mp3" id="2_57b3g"]
-[ext_resource type="AudioStream" uid="uid://cbrbjiqdjd25y" path="res://assets/Bongos.mp3" id="3_osb3j"]
-[ext_resource type="AudioStream" uid="uid://duosg5jri6v7u" path="res://assets/Drums.mp3" id="4_u5n8j"]
-[ext_resource type="AudioStream" uid="uid://bbn8su5gq7vxr" path="res://assets/Bass.mp3" id="5_221np"]
-[ext_resource type="AudioStream" uid="uid://co45b1dvn1td8" path="res://assets/GuitarIntro.mp3" id="6_pgks4"]
-[ext_resource type="AudioStream" uid="uid://dvcq2ycikjk6x" path="res://assets/GuitarHarm.mp3" id="7_dvmrk"]
-[ext_resource type="AudioStream" uid="uid://fyvqvml0ngk4" path="res://assets/Shaker.mp3" id="8_q6j44"]
-[ext_resource type="Texture2D" uid="uid://b0opjtn2x0dng" path="res://sprites/Guitar.svg" id="9_qibou"]
+[ext_resource type="Script" path="res://scripts/live_manager.gd" id="1_gg4bk"]
 [ext_resource type="PackedScene" uid="uid://diinh1xaj70i3" path="res://scenes/menu_btn.tscn" id="10_l2unw"]
 [ext_resource type="PackedScene" uid="uid://b5iadavdf8rsx" path="res://scenes/console.tscn" id="11_mli2n"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_b8idn"]
 font_size = 32
 
+[sub_resource type="LabelSettings" id="LabelSettings_4fkir"]
+font_size = 100
+
 [node name="Main" type="Node2D"]
+script = ExtResource("1_gg4bk")
 
-[node name="Console" parent="." instance=ExtResource("11_mli2n")]
-position = Vector2(1.00002, -266)
-live_mode = true
-
-[node name="GameManager" type="Node" parent="."]
-script = ExtResource("1_tsbj4")
-
-[node name="GuitarMain" type="AudioStreamPlayer" parent="GameManager"]
-stream = ExtResource("2_57b3g")
-parameters/looping = true
-
-[node name="Drums" type="AudioStreamPlayer" parent="GameManager"]
-stream = ExtResource("3_osb3j")
-parameters/looping = true
-
-[node name="BasePerc" type="AudioStreamPlayer" parent="GameManager"]
-stream = ExtResource("4_u5n8j")
-parameters/looping = true
-
-[node name="Bass" type="AudioStreamPlayer" parent="GameManager"]
-stream = ExtResource("5_221np")
-parameters/looping = true
-
-[node name="GuitarIntro" type="AudioStreamPlayer" parent="GameManager"]
-stream = ExtResource("6_pgks4")
-parameters/looping = true
-
-[node name="GuitarHarm" type="AudioStreamPlayer" parent="GameManager"]
-stream = ExtResource("7_dvmrk")
-parameters/looping = true
-
-[node name="Shaker" type="AudioStreamPlayer" parent="GameManager"]
-stream = ExtResource("8_q6j44")
-volume_db = -4.0
-parameters/looping = true
-
-[node name="Sprite" type="Sprite2D" parent="GameManager"]
-position = Vector2(-995, -270)
-scale = Vector2(0.249375, 0.249375)
-texture = ExtResource("9_qibou")
-
-[node name="NextLabel" type="Label" parent="GameManager"]
+[node name="NextLabel" type="Label" parent="."]
+visible = false
 modulate = Color(0.47451, 0.0235294, 0.0235294, 1)
 anchors_preset = -1
 anchor_left = -0.146
 anchor_top = -0.0091111
 anchor_right = -0.0202546
 anchor_bottom = 0.048
-offset_left = -1030.5
-offset_top = -247.689
-offset_right = -886.784
-offset_bottom = -238.201
+offset_left = -1452.0
+offset_top = -1143.25
+offset_right = -1308.28
+offset_bottom = -1050.25
 text = "Siguiente instrumento:"
 label_settings = SubResource("LabelSettings_b8idn")
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="ResultLabel" type="Label" parent="GameManager"]
+[node name="ResultLabel" type="Label" parent="."]
 visible = false
 modulate = Color(0.47451, 0.0235294, 0.0235294, 1)
 anchors_preset = -1
@@ -82,26 +38,20 @@ anchor_left = -0.0202546
 anchor_top = -0.0091111
 anchor_right = -0.0142176
 anchor_bottom = 0.194922
-offset_left = 295.0
-offset_top = 110.856
-offset_right = 663.568
-offset_bottom = 5.536
+offset_left = 233.75
+offset_top = 93.5449
+offset_right = 602.318
+offset_bottom = 186.545
 text = "Puntuación respecto al tiempo:"
 label_settings = SubResource("LabelSettings_b8idn")
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Console" parent="." instance=ExtResource("11_mli2n")]
+position = Vector2(1.00002, -266)
+live_mode = true
 
-[node name="SubmitButton" type="Button" parent="."]
-modulate = Color(1, 0.568627, 0.301961, 1)
-offset_left = -1033.0
-offset_top = 208.0
-offset_right = -753.0
-offset_bottom = 308.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 28
-text = "Comprobar tiempo"
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Label" type="Label" parent="."]
 modulate = Color(0.47451, 0.0235294, 0.0235294, 1)
@@ -110,25 +60,34 @@ anchor_left = -0.0202546
 anchor_top = -0.0091111
 anchor_right = 0.00415277
 anchor_bottom = 0.00823045
-offset_left = 961.0
-offset_top = -632.0
-offset_right = 1484.82
-offset_bottom = -155.0
-text = "Presiona la barra de Espacio para agregar cada instrumento.
+offset_left = -732.0
+offset_top = -741.0
+offset_right = -85.0
+offset_bottom = -456.0
+text = "Ve insertando los instrumentos con sus respectivos botones, de izquierda a derecha.
 
-Si quieres retraer un instrumento, presionala tecla U.
-
-Cuando creas que la pieza está a tiempo, presiona el botón.
-
-Para reiniciar, presiona la tecla R."
+Intenta que todos queden a tiempo."
 label_settings = SubResource("LabelSettings_b8idn")
 autowrap_mode = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="MenuBtn" parent="." instance=ExtResource("10_l2unw")]
-offset_left = -1079.0
-offset_top = -575.0
-offset_right = -799.0
-offset_bottom = -475.0
+offset_left = -725.0
+offset_top = 608.0
+offset_right = -445.0
+offset_bottom = 708.0
 
-[connection signal="pressed" from="SubmitButton" to="GameManager" method="_on_submit_button_pressed"]
+[node name="TitleLabel" type="Label" parent="."]
+modulate = Color(0.47451, 0.0235294, 0.0235294, 1)
+anchors_preset = -1
+anchor_left = -0.0270972
+anchor_top = -0.121
+anchor_right = -0.0270972
+anchor_bottom = -0.0946502
+offset_left = -539.0
+offset_top = -899.0
+offset_right = 536.0
+offset_bottom = -745.0
+text = "A tocar en vivo"
+label_settings = SubResource("LabelSettings_4fkir")
+horizontal_alignment = 1
+autowrap_mode = 2

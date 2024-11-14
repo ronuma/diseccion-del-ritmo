@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bi3tjxd38u5a7"]
+[gd_scene load_steps=6 format=3 uid="uid://bi3tjxd38u5a7"]
 
 [ext_resource type="Script" path="res://scripts/track_manager.gd" id="1_mr10o"]
 [ext_resource type="Texture2D" uid="uid://b0opjtn2x0dng" path="res://sprites/Guitar.svg" id="2_oh1y3"]
 [ext_resource type="Texture2D" uid="uid://cs16umqjyi58a" path="res://sprites/Play.png" id="3_l50kt"]
+[ext_resource type="Texture2D" uid="uid://dftch5lxvhcn2" path="res://assets/Correct.jpeg" id="4_fdm1d"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_aqap8"]
 font_size = 32
@@ -35,16 +36,21 @@ offset_left = 356.0
 offset_top = -63.0
 offset_right = 357.0
 offset_bottom = -18.0
-text = "'Espacio'"
+text = "C"
 label_settings = SubResource("LabelSettings_aqap8")
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Player" type="AudioStreamPlayer" parent="."]
 
-[node name="Indicator" type="Sprite2D" parent="."]
+[node name="PlayIndicator" type="Sprite2D" parent="."]
 modulate = Color(0.982343, 0.982342, 0.982342, 1)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("3_l50kt")
+
+[node name="TimeIndicator" type="Sprite2D" parent="."]
+position = Vector2(2.86102e-06, -261)
+scale = Vector2(0.0648437, 0.0648437)
+texture = ExtResource("4_fdm1d")
 
 [connection signal="value_changed" from="Slider" to="." method="_on_slider_value_changed"]

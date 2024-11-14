@@ -9,11 +9,9 @@ var ref_time = 0
 	{"node": $Console/Drums/Player,
 	"signal": "drums"},
 	{"node": $Console/Shaker/Player,
-	"signal": "shaker",
-	"midi_map": 48},
+	"signal": "shaker"},
 	{"node": $Console/Guitar/Player,
-	"signal": "guitar",
-	"midi_map": 43},
+	"signal": "guitar"},
 	{"node": $Console/Bass/Player,
 	"signal": "bass"}]
 

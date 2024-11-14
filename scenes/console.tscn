@@ -41,7 +41,6 @@ vertical_alignment = 1
 
 [node name="Player" parent="Guitar" index="3"]
 stream = ExtResource("2_wca1p")
-autoplay = true
 parameters/looping = true
 
 [node name="Bongos" parent="." instance=ExtResource("1_kudgv")]
@@ -59,13 +58,12 @@ offset_left = -4.0
 offset_top = -57.0
 offset_right = 26.0
 offset_bottom = -12.0
-text = "B"
+text = "V"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Player" parent="Bongos" index="3"]
 stream = ExtResource("6_mdh7k")
-autoplay = true
 parameters/looping = true
 
 [node name="Drums" parent="." instance=ExtResource("1_kudgv")]
@@ -83,13 +81,12 @@ offset_left = -4.0
 offset_top = -57.0
 offset_right = 26.0
 offset_bottom = -12.0
-text = "D"
+text = "B"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Player" parent="Drums" index="3"]
 stream = ExtResource("8_04eij")
-autoplay = true
 parameters/looping = true
 
 [node name="Shaker" parent="." instance=ExtResource("1_kudgv")]
@@ -108,13 +105,12 @@ offset_left = -4.0
 offset_top = -57.0
 offset_right = 26.0
 offset_bottom = -12.0
-text = "S"
+text = "N"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Player" parent="Shaker" index="3"]
 stream = ExtResource("4_xer0s")
-autoplay = true
 parameters/looping = true
 
 [node name="Bass" parent="." instance=ExtResource("1_kudgv")]
@@ -133,13 +129,12 @@ offset_left = -4.0
 offset_top = -57.0
 offset_right = 26.0
 offset_bottom = -12.0
-text = "C"
+text = "M"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Player" parent="Bass" index="3"]
 stream = ExtResource("10_rfgb5")
-autoplay = true
 parameters/looping = true
 
 [editable path="Guitar"]

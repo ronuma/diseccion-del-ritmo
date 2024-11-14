@@ -1,36 +1,36 @@
 extends Node2D
 
 const signals = {
-	"C": "bass",
-	"B": "bongos",
-	"D": "drums",
-	"S": "shaker",
-	"'Espacio'": "ui_accept"
+	"C": "guitar",
+	"V": "bongos",
+	"B": "drums",
+	"N": "shaker",
+	"M": "bass"
 }
 
 @onready var player = $Player
 @onready var label = $Label
-@onready var indicator = $Indicator
+@onready var play_indicator = $PlayIndicator
+@onready var time_indicator = $TimeIndicator
 
 var player_signal
 var free_mode
-var prev_midi_message = null
+var live_mode
 
-func _on_slider_value_changed(value: float) -> void:
+func _on_slider_value_changed(value: float) 	-> void:
 	if value == -40.0:
 		player.volume_db = -INF
 		return
 	player.volume_db = value
 	
 func handle_playing_indicator():
-	if player.playing:
-		indicator.texture = load("res://sprites/Play.png")
-	else:
-		indicator.texture = load("res://sprites/Mute.png")
+	play_indicator.texture = load("res://sprites/" + ("Play" if player.playing else "Mute") + ".png")
 
 func _ready() -> void:
 	player_signal = signals[label.text]
 	free_mode = get_parent().free_mode
+	live_mode = get_parent().live_mode
+	time_indicator.visible = false
 
 func _process(_delta: float) -> void:
 	if free_mode:
@@ -39,5 +39,8 @@ func _process(_delta: float) -> void:
 				player.stop()
 			else:
 				player.play()
+	
+	if live_mode and player.playing:
+		time_indicator.visible = true
 	
 	handle_playing_indicator()
