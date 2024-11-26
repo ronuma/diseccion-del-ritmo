@@ -2,6 +2,7 @@ extends Node
 
 @onready var tracks = []
 @onready var ref_player = $Console/Guitar/Player
+@onready var inst_label_l = $InstLabelL
 
 const pass_range = globals.pass_range
 
@@ -23,6 +24,11 @@ func _ready() -> void:
 		node.playable = false
 	track_to_play = tracks[i]
 	track_to_play.node.playable = true
+	
+	if globals.midi_connected:
+		inst_label_l.text = """De izquierda a derecha, activa la reproducción 
+							de cada instrumento con su botón correspondiente, 
+							procurando que todos entren a tiempo."""
 
 func check_score(val: float):
 	# Check if value is valid and "in time"
@@ -40,10 +46,11 @@ func _process(_delta: float):
 	if track_to_play.player.playing:
 		track_to_play.node.playable = false
 		
+		track_to_play.time_indicator.visible = true
+		
 		if i > 0:
-			track_to_play.time_indicator.visible = true
 			var scored = check_score(abs(ref_player.get_playback_position() - track_to_play.player.get_playback_position()))
-			track_to_play.time_indicator.texture = load("res://assets/" + ("Correct" if scored else  "Wrong") + ".jpeg")
+			track_to_play.time_indicator.texture = load("res://assets/" + ("Correct" if scored else  "Wrong") + ".png")
 		
 		i = i + 1 if i < len(tracks) - 1 else i
 		track_to_play = tracks[i]
@@ -51,7 +58,6 @@ func _process(_delta: float):
 	else:
 		track_to_play.time_indicator.visible = false
 		track_to_play.node.playable = true
-
 
 func _on_restart_btn_pressed() -> void:
 	restart()

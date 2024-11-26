@@ -1,7 +1,7 @@
 extends Node
 
 const loop_duration = 4.17391304347826
-const pass_range = 0.5
+const pass_range = 0.1
 var midi_connected = false
 
 func _ready() -> void:

@@ -52,21 +52,54 @@ position = Vector2(1.00002, -266)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Label" type="Label" parent="."]
+[node name="InstLabelL" type="Label" parent="."]
 modulate = Color(0.47451, 0.0235294, 0.0235294, 1)
 anchors_preset = -1
 anchor_left = -0.0202546
 anchor_top = -0.0091111
 anchor_right = 0.00415277
 anchor_bottom = 0.00823045
-offset_left = -732.0
-offset_top = -741.0
-offset_right = -85.0
-offset_bottom = -456.0
-text = "Ve insertando los instrumentos con sus respectivos botones, de izquierda a derecha.
+offset_left = -730.0
+offset_top = -713.0
+offset_right = -83.0
+offset_bottom = -476.0
+text = "De izquierda a derecha, activa la reproducción de cada instrumento con su tecla correspondiente, procurando que todos entren a tiempo.
 
-Intenta que todos queden a tiempo."
+"
 label_settings = SubResource("LabelSettings_b8idn")
+autowrap_mode = 2
+
+[node name="InstLabelR" type="Label" parent="."]
+modulate = Color(0.47451, 0.0235294, 0.0235294, 1)
+anchors_preset = -1
+anchor_left = -0.0202546
+anchor_top = -0.0091111
+anchor_right = 0.00415277
+anchor_bottom = 0.00823045
+offset_left = 73.0
+offset_top = -716.0
+offset_right = 720.0
+offset_bottom = -479.0
+text = "No podrás rehacer un movimiento, así que, para reintentar, tendrás que empezar de cero. Si hace falta, vuelve al ensayo para familiarizarte con el ritmo.
+"
+label_settings = SubResource("LabelSettings_b8idn")
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="InstLabelB" type="Label" parent="."]
+modulate = Color(0.47451, 0.0235294, 0.0235294, 1)
+anchors_preset = -1
+anchor_left = -0.0202546
+anchor_top = -0.0091111
+anchor_right = 0.00415277
+anchor_bottom = 0.00823045
+offset_left = -323.0
+offset_top = 564.0
+offset_right = 324.0
+offset_bottom = 726.0
+text = "Tip: como la guitarra es el primer instrumento en sonar, es el que \"lleva el tiempo\", al menos para este ejercicio."
+label_settings = SubResource("LabelSettings_b8idn")
+horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="MenuBtn" parent="." instance=ExtResource("10_l2unw")]
@@ -99,6 +132,6 @@ offset_right = 734.0
 offset_bottom = 704.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 28
-text = "Reiniciar"
+text = "Reintentar"
 
 [connection signal="pressed" from="RestartBtn" to="." method="_on_restart_btn_pressed"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dftch5lxvhcn2"
-path="res://.godot/imported/Correct.jpeg-151a5cb047de230ec50ca1531f3c7eb7.ctex"
+uid="uid://dnev1idvxatqx"
+path="res://.godot/imported/CartelRosa.png-319e7007ed385ec4873f258820b5104f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Correct.jpeg"
-dest_files=["res://.godot/imported/Correct.jpeg-151a5cb047de230ec50ca1531f3c7eb7.ctex"]
+source_file="res://assets/CartelRosa.png"
+dest_files=["res://.godot/imported/CartelRosa.png-319e7007ed385ec4873f258820b5104f.ctex"]
 
 [params]
 

@@ -1,12 +1,8 @@
 extends Node2D
 
-# TODO: Maybe play all instruments at the beginning
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+	for node in $Console.get_children():
+		if node.name == "BG":
+			continue
+		var player = node.get_child(3)
+		player.play()

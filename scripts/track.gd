@@ -25,8 +25,9 @@ func handle_playing_indicator():
 func _ready() -> void:
 	time_indicator.visible = false
 	player_signal = name
-	# If MIDI connected, don't show label
+	# If MIDI connected, don't show label and disable slider
 	label.visible = not globals.midi_connected
+	slider.editable = not globals.midi_connected
 
 func _process(_delta: float) -> void:
 	if playable:

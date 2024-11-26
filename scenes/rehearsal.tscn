@@ -17,7 +17,7 @@ metadata/_edit_horizontal_guides_ = [-712.0]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="InstructionLabel" type="Label" parent="."]
+[node name="InstructionLabelL" type="Label" parent="."]
 modulate = Color(0.47451, 0.0235294, 0.0235294, 1)
 anchors_preset = -1
 anchor_left = -0.0270972
@@ -32,17 +32,17 @@ text = "Cambia el volumen de los instrumentos moviendo los faders de tu lado izq
 label_settings = SubResource("LabelSettings_6feeu")
 autowrap_mode = 2
 
-[node name="InstructionLabel2" type="Label" parent="."]
+[node name="InstructionLabelR" type="Label" parent="."]
 modulate = Color(0.47451, 0.0235294, 0.0235294, 1)
 anchors_preset = -1
 anchor_left = -0.0270972
 anchor_top = -0.121
 anchor_right = -0.0270972
 anchor_bottom = -0.0946502
-offset_left = 130.0
-offset_top = -667.0
-offset_right = 701.0
-offset_bottom = -340.0
+offset_left = 135.0
+offset_top = -709.0
+offset_right = 706.0
+offset_bottom = -382.0
 text = "Silencia/reproduce los instrumentos presionando los primeros cinco botones de tu lado derecho"
 label_settings = SubResource("LabelSettings_6feeu")
 horizontal_alignment = 2

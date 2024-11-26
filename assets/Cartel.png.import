@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ce16g4spw5nni"
-path="res://.godot/imported/Wrong.jpeg-7ec9d1ec0819c5c6f335bce01a8e0508.ctex"
+uid="uid://b2jhrp3mg37mv"
+path="res://.godot/imported/Cartel.png-d28d9f820b56047eee30f2a88752346b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Wrong.jpeg"
-dest_files=["res://.godot/imported/Wrong.jpeg-7ec9d1ec0819c5c6f335bce01a8e0508.ctex"]
+source_file="res://assets/Cartel.png"
+dest_files=["res://.godot/imported/Cartel.png-d28d9f820b56047eee30f2a88752346b.ctex"]
 
 [params]
 

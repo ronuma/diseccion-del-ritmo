@@ -1,6 +1,8 @@
 extends Node
 
 @onready var ref_player = $Console/Guitar/Player
+@onready var volume_inst_label = $InstructionLabelL
+@onready var play_inst_label = $InstructionLabelR
 @onready var tracks = []
 	
 func _ready():
@@ -12,7 +14,13 @@ func _ready():
 			"player": node.get_child(3),
 			"name": node.name
 		})
-		node.get_child(3).play()
+	
+	if not globals.midi_connected:
+		volume_inst_label.text = """Cambia el volumen de los instrumentos 
+									moviendo los sliders con el cursor"""
+		play_inst_label.text = """Silencia/reproduce los instrumentos 
+									presionando las teclas indicadas al lado
+									izquierdo de cada uno"""
 
 func assign_new_ref(player: AudioStreamPlayer):
 	# Ensure ref is always a playing instrument and not the just stopped one
