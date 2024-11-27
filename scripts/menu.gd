@@ -11,3 +11,6 @@ func _on_live_btn_pressed() -> void:
 	
 func _on_free_btn_pressed() -> void:
 	go_to_scene("free")
+
+func _ready():
+	$ElManisero.play()

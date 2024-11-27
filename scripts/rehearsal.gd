@@ -47,3 +47,13 @@ func _input(e):
 				for item in tracks:
 					if item.node.note_pitch == e.pitch:
 						assign_new_ref(item.player)
+
+@onready var song = $ElManisero
+@onready var song_btn = $SongBtn
+func _on_song_btn_pressed():
+	if song.playing:
+		song.stop()
+		song_btn.text = "Escuchar 'El Manisero'"
+	else:
+		song.play()
+		song_btn.text = "Pausar"
