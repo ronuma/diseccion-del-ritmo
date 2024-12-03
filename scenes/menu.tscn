@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://n8bgqdj8spkl"]
+[gd_scene load_steps=7 format=3 uid="uid://n8bgqdj8spkl"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_bpe4i"]
 [ext_resource type="Texture2D" uid="uid://dnev1idvxatqx" path="res://assets/CartelRosa.png" id="2_hggw0"]
 [ext_resource type="PackedScene" uid="uid://chyfwy3aovhwr" path="res://scenes/base_audio.tscn" id="3_i2wub"]
+[ext_resource type="Texture2D" uid="uid://cs16umqjyi58a" path="res://sprites/Play.png" id="4_ly0up"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hkmov"]
 font_size = 100
@@ -119,6 +120,15 @@ autowrap_mode = 2
 
 [node name="ElManisero" parent="." instance=ExtResource("3_i2wub")]
 
+[node name="PlayBtn" type="Button" parent="."]
+offset_left = 1146.0
+offset_top = 603.0
+offset_right = 1314.0
+offset_bottom = 771.0
+icon = ExtResource("4_ly0up")
+expand_icon = true
+
 [connection signal="pressed" from="RehearseBtn" to="." method="_on_rehearse_btn_pressed"]
 [connection signal="pressed" from="LiveBtn" to="." method="_on_live_btn_pressed"]
 [connection signal="pressed" from="FreeBtn" to="." method="_on_free_btn_pressed"]
+[connection signal="pressed" from="PlayBtn" to="." method="_on_play_btn_pressed"]

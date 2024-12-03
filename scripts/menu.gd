@@ -14,3 +14,14 @@ func _on_free_btn_pressed() -> void:
 
 func _ready():
 	$ElManisero.play()
+	
+var play_icon = preload("res://sprites/Mute.png")
+var mute_icon = preload("res://sprites/Play.png")
+
+func _on_play_btn_pressed() -> void:
+	if $ElManisero.playing:
+		$ElManisero.stop()
+		$PlayBtn.set_button_icon(play_icon)
+	else:
+		$ElManisero.play()
+		$PlayBtn.set_button_icon(mute_icon)
